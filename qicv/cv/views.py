@@ -71,12 +71,10 @@ class MyCVListView(ListView):
 
 
 class CVDetailView(DetailView):
-    queryset = CV.objects.all()
-
     def get_object(self):
         # Call the superclass
         obj = super(CVDetailView, self).get_object()
-        if obj.has_view_permission(obj):
+        if obj.has_view_permission(self.request.user):
             return obj
         else:
             return None
