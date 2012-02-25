@@ -4,27 +4,30 @@
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Welcome to Qi CV</h1>
-        <p>A wonderful place for CVs.</p>
+        <p>A wonderful place to create amazing CVs for children with disabilities.</p>
+        {% if request.user.is_authenticated %}
+          You're logged in. <a href="/cvs/my/">See your CVs</a><br />
+          <div class="cv-create-box" style="margin-top:25px;">
+          <a href="{% url cv:create %}" class="btn btn-large btn-primary">Create a CV</a>
+          </div>
+        {% else %}
         <p><a class="btn btn-primary btn-large" href="/accounts/register/">Sign Up &raquo;</a></p>
         <p><a href="/accounts/login/">Log in if you already have an account.</a>
+        {% endif %}
       </div>
 
-      <!-- Example row of columns -->
-<!--       <div class="row">
+      <div class="row">
         <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>Share Information</h2>
+           <p>Easily create a CV that highlights the strengths and positive aspects of children with disabilities.</p>
         </div>
         <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>Social Support</h2>
+           <p>Encourage support for children with disabilities.</p>
        </div>
         <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>Positivity</h2>
+          <p>Shift the focus to the person's positive strengths.</p>
         </div>
-      </div> -->
+      </div>
 {% endblock %}
