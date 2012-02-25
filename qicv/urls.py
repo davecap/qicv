@@ -11,6 +11,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', direct_to_template, {'template': 'index.html'}, name='index'),
     # url(r'^qicv/', include('qicv.foo.urls')),
+    url(r'^accounts/', include('userprofiles.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
 
