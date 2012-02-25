@@ -71,6 +71,8 @@ class MyCVListView(ListView):
 
 
 class CVDetailView(DetailView):
+    model = CV
+
     def get_object(self):
         # Call the superclass
         obj = super(CVDetailView, self).get_object()
