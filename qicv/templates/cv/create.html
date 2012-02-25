@@ -6,13 +6,13 @@
 {% block content %}
     <h1>{% trans "Create a CV" %}</h1>
 
-    <form action="." method="post">
+    <form action="." method="post" class="form-horizontal">
         {% csrf_token %}
         <fieldset>
             {{ form.as_p }}
         </fieldset>
-        <fieldset class="submit-row">
-            <p><button class="btn btn-primary btn-large" type="submit">{% trans "Create" %}</button></p>
-        </fieldset>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">{% trans "Create" %}</button>
+        </div>
     </form>
 {% endblock %}
