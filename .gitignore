@@ -12,4 +12,5 @@ build/
 pip-log.txt
 env
 *.db
+*.sqlite3
 vendor
