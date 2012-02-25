@@ -200,7 +200,7 @@ LOGGING = {
 # Sendgrid
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'qicv'
-EMAIL_HOST_PASSWORD = 'qicv'
+EMAIL_HOST_PASSWORD = 'adminqicv'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
