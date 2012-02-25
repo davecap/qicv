@@ -132,7 +132,7 @@ TEMPLATE_DIRS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'apps.userprofiles.auth_backends.EmailOrUsernameModelBackend',
+    'userprofiles.auth_backends.EmailOrUsernameModelBackend',
 )
 
 INSTALLED_APPS = (
@@ -147,10 +147,14 @@ INSTALLED_APPS = (
     'south',
     'sorl.thumbnail',
     'django_extensions',
-    'apps.userprofiles',
-    'apps.userprofiles.contrib.accountverification',
-    'apps.userprofiles.contrib.emailverification',
-    'apps.userprofiles.contrib.profiles',
+    'accounts',
+    'ajax_validation',
+    'announcements',
+    'notification',
+    'userprofiles',
+    'userprofiles.contrib.accountverification',
+    'userprofiles.contrib.emailverification',
+    'userprofiles.contrib.profiles',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -196,5 +200,5 @@ USERPROFILES_REGISTRATION_FULLNAME = True
 USERPROFILES_USE_ACCOUNT_VERIFICATION = True
 USERPROFILES_REGISTRATION_FORM = 'accounts.forms.ProfileRegistrationForm'
 USERPROFILES_USE_PROFILE = True
-USERPROFILES_PROFILE_ALLOW_EMAIL_CHANGE = True
+USERPROFILES_PROFILE_ALLOW_EMAIL_CHANGE = False
 USERPROFILES_INLINE_PROFILE_ADMIN = True

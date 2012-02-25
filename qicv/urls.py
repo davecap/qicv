@@ -1,17 +1,32 @@
+from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
+from django.http import HttpResponseServerError
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic.simple import direct_to_template
+from django.template import Context, loader
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'qicv.views.home', name='home'),
+    url(r'^$', direct_to_template, {'template': 'index.html'}, name='index'),
     # url(r'^qicv/', include('qicv.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )
+
+# urlpatterns += patterns('',
+#     url(r'^APP/', include('apps.APP.urls', namespace='APP', app_name='APP')),
+# )
+
+if settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += patterns('django.views.static',
+        url(r'^media/(?P<path>.*)$', 'serve', {'document_root': settings.MEDIA_ROOT}),
+    )
+
+
+def handler500(request):
+    t = loader.get_template('500.html')
+    return HttpResponseServerError(t.render(Context({
+        'request': request,
+    })))

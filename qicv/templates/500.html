@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block css %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block content %}
+<div class="container glass" style="height:auto;margin-top:30px;">
+    <div style="padding:20px;">
+        <p>You've encountered an error, oh noes!</p>
+        {% if request.sentry.id %}
+            <p>If you need assistance, you may reference this error as <strong>{{ request.sentry.id }}</strong>.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

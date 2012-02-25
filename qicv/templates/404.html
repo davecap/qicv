@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block css %}
+{% endblock %}
+
+{% block js %}
+<script>
+var GOOG_FIXURL_LANG = (navigator.language || '').slice(0,2),
+    GOOG_FIXURL_SITE = location.host;
+</script>
+<script src="http://linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container glass" style="height:auto;margin-top:30px;">
+    <div style="padding:20px;">
+        404 not found.
+    </div>
+</div>
+{% endblock %}
