@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load countries_tags %}
+
+{% block title %}{% trans "CV" %} of {{ cv.full_name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ cv.full_name }}</h1>
+
+    <div>
+        Birthday: {{ cv.date_of_birth }}<br />
+        Location: {{ cv.city }} <img src="{{ cv.country.iso|iso_flag }}"/><br />
+    </div>
+{% endblock %}

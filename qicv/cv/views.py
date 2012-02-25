@@ -72,6 +72,8 @@ class MyCVListView(ListView):
 
 class CVDetailView(DetailView):
     model = CV
+    context_object_name = "cv"
+    template_name = "cv/detail.html"
 
     def get_object(self):
         # Call the superclass
