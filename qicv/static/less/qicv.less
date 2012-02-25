@@ -1,0 +1,221 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-image: url('../img/header-bg-small.png');
+  background-repeat: repeat-x;
+  background-position: top;
+  &.about {
+    //background-image: url('../img/bg/squares.png');
+    //background-image: url('../img/bg/project_paper.png');
+    background-image: url('../img/bg/diagonal-noise.png');
+    background-repeat: repeat;
+  }
+}
+
+section {
+  padding-top: 60px;
+}
+
+.header {
+  border-top: 5px solid #303030;
+  height: 150px;
+  margin-bottom: 70px;
+}
+
+/* Faded out hr */
+hr.soften {
+  height: 1px;
+  margin: 54px 0;
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  border: 0;
+}
+
+.main {
+  // min-height: 365px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto auto;
+  //background-image: url('../img/molecules.jpg');
+  //background-repeat: repeat-x;
+  //background-position: bottom;
+  &.no-bg {
+    background-image: none;
+  }
+}
+
+.jumbotron {
+  position: relative;
+  a:hover {
+    text-decoration:none;
+  }
+}
+.jumbotron h1 {
+  margin-bottom: 9px;
+  font-size: 81px;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.jumbotron p {
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+.jumbotron .btn-large {
+  font-size: 20px;
+  font-weight: normal;
+  padding: 14px 24px;
+  margin-right: 10px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+/* Masthead (docs home) */
+.masthead {
+  padding-top: 50px;
+  margin-bottom: 40px;
+}
+.masthead h1,
+.masthead p {
+  text-align: center;
+}
+.masthead h1 {
+  font-family: 'Cabin', sans-serif;
+  margin-bottom: 18px;
+}
+.masthead p {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 30px;
+  line-height: 36px;
+}
+
+
+/* Specific jumbotrons
+------------------------- */
+/* supporting docs pages */
+.subhead {
+  padding-bottom: 0;
+  margin-bottom: 9px;
+}
+.subhead h1 {
+  font-size: 54px;
+}
+
+
+/* Quick links
+-------------------------------------------------- */
+.quick-links {
+  list-style: none;
+  text-align: center;
+  display:inline;
+}
+.quick-links li {
+  display: inline;
+  margin: 0 5px;
+  color: #999;
+}
+.quick-links .github-btn,
+.quick-links .tweet-btn,
+.quick-links .follow-btn {
+  position: relative;
+  top: 5px;
+}
+
+
+/* Footer
+-------------------------------------------------- */
+.push {
+  height: 50px;
+}
+
+.footer {
+  height: 50px;
+  background-color: rgb(76,76,76);
+  color: white;
+}
+
+.footer p {
+  margin-bottom: 0;
+  color: #555;
+}
+
+.footer-inner {
+}
+
+.footer-top {
+  width: auto;
+  padding-top: 25px;
+  height:100px;
+  overflow:hidden;
+  h2 {
+    color: white;
+  }
+  p {
+    color: white;
+  }
+}
+
+.footer-bottom {
+  width: auto;
+  height: 60px;
+  overflow: hidden;
+  padding: 0;
+  div {
+    margin-top:10px;
+    color: #EEE;
+  }
+}
+
+.beta-box {
+  margin: 0 auto;
+  width: 340px;
+  text-align:center;
+  form {
+    margin-top: 25px;
+  }
+}
+
+.beta-box form.form-inline .input-prepend {
+  margin-bottom: 0;
+  vertical-align: middle;
+  width: 205px;
+}
+
+
+.hero-unit {
+  padding:40px;
+  border: 5px solid #303030;
+}
+
+.messages {
+  margin-top:20px;
+}
+
+.content-box {  
+  .box-shadow(0 1px 7px rgba(0, 0, 0, 0.1));
+  border: 1px solid #DDD;
+  .border-radius(4px);
+  margin-bottom: 30px;
+  .content-box-header {
+    #translucent > .background(#DDD, 0.5);
+    border-bottom: 1px solid #DDD;
+    padding: 10px 30px 10px 30px;
+  }
+  .content-box-body {
+    padding: 20px 30px 20px 30px;
+    #translucent > .background(@white, 0.9);
+  }
+}
+
+
+.nav-tabs.nav-stacked > li a {
+  #translucent > .background(@white, 0.7);
+  .box-shadow(0 1px 7px rgba(0, 0, 0, 0.1));
+}
+
