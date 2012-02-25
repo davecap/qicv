@@ -1,0 +1,20 @@
+[
+    {
+        "pk": 1,
+        "model": "auth.user",
+        "fields": {
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "is_active": true,
+            "is_superuser": true,
+            "is_staff": true,
+            "last_login": "2012-02-25 12:31:43",
+            "groups": [],
+            "user_permissions": [],
+            "password": "sha1$dccc6$56975224e437b12a26ce5b35eaa297d0549707ab",
+            "email": "admin@qicv.me",
+            "date_joined": "2012-02-25 12:31:43"
+        }
+    }
+]

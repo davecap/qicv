@@ -8,24 +8,24 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding model 'Profile'
-        db.create_table('accounts_profile', (
+        # Adding model 'UserProfile'
+        db.create_table('accounts_userprofile', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
             ('about', self.gf('django.db.models.fields.TextField')(blank=True)),
         ))
-        db.send_create_signal('accounts', ['Profile'])
+        db.send_create_signal('accounts', ['UserProfile'])
 
 
     def backwards(self, orm):
         
-        # Deleting model 'Profile'
-        db.delete_table('accounts_profile')
+        # Deleting model 'UserProfile'
+        db.delete_table('accounts_userprofile')
 
 
     models = {
-        'accounts.profile': {
-            'Meta': {'object_name': 'Profile'},
+        'accounts.userprofile': {
+            'Meta': {'object_name': 'UserProfile'},
             'about': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'user': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['auth.User']", 'unique': 'True'})

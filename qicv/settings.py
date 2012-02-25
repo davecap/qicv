@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'south',
     'sorl.thumbnail',
     'django_extensions',
+    # 'sendgrid', # using SMTP for now
     'accounts',
     'ajax_validation',
     'announcements',
@@ -195,6 +196,13 @@ LOGGING = {
     }
 }
 
+# Sendgrid
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'qicv'
+EMAIL_HOST_PASSWORD = 'qicv'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 # Django-Toolbar
 INTERNAL_IPS = ('127.0.0.1',) # Django-Toolbar
 
@@ -229,7 +237,7 @@ if DEBUG:
     COMPRESS_OFFLINE = False
 
 # user profile model
-AUTH_PROFILE_MODULE = 'accounts.Profile'
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 # Userprofiles app
 USERPROFILES_CHECK_UNIQUE_EMAIL = True
