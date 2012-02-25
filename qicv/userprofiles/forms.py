@@ -83,7 +83,7 @@ class RegistrationForm(forms.Form):
         return self.cleaned_data
 
     def _generate_username(self):
-        username = uuid4().get_hex()
+        username = uuid4().get_hex()[:30]
         try:
             User.objects.get(username=username)
             return self._generate_username()
