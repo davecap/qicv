@@ -165,13 +165,28 @@ INSTALLED_APPS = (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(levelname)s: %(message)s'
+        },
+    },
     'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler'
         }
     },
     'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
@@ -187,7 +202,31 @@ INTERNAL_IPS = ('127.0.0.1',) # Django-Toolbar
 COMPRESS_ROOT = STATIC_ROOT # default
 COMPRESS_URL = STATIC_URL # default
 COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
+COMPRESS_JS_FILTERS = []
 COMPRESS_CSS_FILTERS = []
+
+if DEBUG:
+    DEVSERVER_MODULES = (
+        #'devserver.modules.sql.SQLRealTimeModule',
+        #'devserver.modules.sql.SQLSummaryModule',
+        #'devserver.modules.profile.ProfileSummaryModule',
+        'devserver.modules.ajax.AjaxDumpModule',
+        #'devserver.modules.profile.MemoryUseModule',
+        'devserver.modules.cache.CacheSummaryModule',
+        #'devserver.modules.profile.LineProfilerModule',
+    )
+
+    INSTALLED_APPS += (
+        'devserver',
+        'debug_toolbar',
+    )
+
+    MIDDLEWARE_CLASSES += (
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    )
+
+    COMPRESS_ENABLED = False
+    COMPRESS_OFFLINE = False
 
 # user profile model
 AUTH_PROFILE_MODULE = 'accounts.Profile'
