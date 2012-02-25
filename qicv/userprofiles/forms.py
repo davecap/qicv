@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from uuid import uuid4
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
@@ -14,12 +16,12 @@ if 'userprofiles.contrib.emailverification' in settings.INSTALLED_APPS:
 
 
 class RegistrationForm(forms.Form):
-    username = forms.RegexField(label=_("Username"), max_length=30,
-        regex=r'^[\w.-]+$', error_messages = {'invalid': _(
-            'This value may contain only letters, numbers and ./-/_ characters.')})
+    # username = forms.RegexField(label=_("Username"), max_length=30,
+    #     regex=r'^[\w.-]+$', error_messages = {'invalid': _(
+    #         'This value may contain only letters, numbers and ./-/_ characters.')})
 
-    email = forms.EmailField(label=_('E-mail'))
-    email_repeat = forms.EmailField(label=_('E-mail (repeat)'), required=True)
+    email = forms.EmailField(label=_('Email'))
+    email_repeat = forms.EmailField(label=_('Email (repeat)'), required=True)
 
     password = forms.CharField(label=_('Password'),
         widget=forms.PasswordInput(render_value=False))
@@ -42,12 +44,12 @@ class RegistrationForm(forms.Form):
             del self.fields['first_name']
             del self.fields['last_name']
 
-    def clean_username(self):
-        if User.objects.filter(username__iexact=self.cleaned_data['username']):
-            raise forms.ValidationError(
-                _(u'A user with that username already exists.'))
+    # def clean_username(self):
+    #     if User.objects.filter(username__iexact=self.cleaned_data['username']):
+    #         raise forms.ValidationError(
+    #             _(u'A user with that username already exists.'))
 
-        return self.cleaned_data['username']
+    #     return self.cleaned_data['username']
 
     def clean_email(self):
         if not up_settings.CHECK_UNIQUE_EMAIL:
@@ -80,16 +82,26 @@ class RegistrationForm(forms.Form):
 
         return self.cleaned_data
 
+    def _generate_username(self):
+        username = uuid4().get_hex()
+        try:
+            User.objects.get(username=username)
+            return self._generate_username()
+        except User.DoesNotExist:
+            return username
+
     def save(self, *args, **kwargs):
+        # generate username
+        username = self._generate_username()
         if up_settings.USE_ACCOUNT_VERIFICATION:
             new_user = AccountVerification.objects.create_inactive_user(
-                username=self.cleaned_data['username'],
+                username=username,
                 password=self.cleaned_data['password'],
                 email=self.cleaned_data['email'],
             )
         else:
             new_user = User.objects.create_user(
-                username=self.cleaned_data['username'],
+                username=username,
                 password=self.cleaned_data['password'],
                 email=self.cleaned_data['email']
             )
