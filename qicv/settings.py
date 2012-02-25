@@ -157,6 +157,8 @@ INSTALLED_APPS = (
     'userprofiles.contrib.emailverification',
     'userprofiles.contrib.profiles',
     'gunicorn',
+    'countries',
+    'cv',
 )
 
 # A sample logging configuration. The only tangible logging

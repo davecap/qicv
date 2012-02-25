@@ -14,10 +14,30 @@
           <a class="brand" href="#">Qi CV</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              {% if request.user.is_authenticated %}
+              <li class="active"><a href="/">Dashboard</a></li>
+              <li><a href="/cvs/">My CVs</a></li>
+              <li><a href="/cvs/all">All CVs</a></li>
+              {% else %}
+              <li class="active"><a href="/">Home</a></li>
+              {% endif %}
             </ul>
+            <ul class="nav pull-right">
+              {% if request.user.is_authenticated %}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ request.user.first_name }} {{ request.user.last_name }} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/accounts/profile/">My Profile</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/accounts/logout/">Log Out</a></li>
+                </ul>
+              </li>
+              {% else %}
+              <li><a href="/accounts/register/">Register</a></li>
+              <li><a href="/accounts/login/">Log In</a></li>
+              {% endif %}
+            </ul>
+
           </div><!--/.nav-collapse -->
         </div>
       </div>
