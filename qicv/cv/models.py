@@ -31,7 +31,7 @@ class CV(models.Model):
         return self.full_name()
 
     def initials(self):
-        return '%s.%s.' % self.first_name[0], self.last_name[0]
+        return '%s.%s.' % (self.first_name[0], self.last_name[0])
 
     def full_name(self):
         return ' '.join([self.first_name, self.last_name])
