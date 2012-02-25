@@ -9,9 +9,8 @@
 
     {% if cvs %}
         {% for c in cvs %}
-            <div class="cv" style="margin:20px;">
-                <span class="name">{{ c.full_name }}</span> <br />
-                <span class="country"><img src="{{ c.country.iso|iso_flag }}"/></span><br />
+            <div class="cv" style="margin:20px;padding:10px;border: 0.5px solid black;">
+                <span class="name">{{ c.full_name }}</span>&nbsp;<span class="country"><img src="{{ c.country.iso|iso_flag }}"/></span><br />
                 <a href="{% url cv:edit c.pk %}" class="btn btn-info">Edit</a>
             </div>
         {% endfor %}
