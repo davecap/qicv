@@ -13,6 +13,8 @@ urlpatterns = patterns('',
     # url(r'^qicv/', include('qicv.foo.urls')),
     url(r'^accounts/', include('userprofiles.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^cvs/', include('cv.urls', namespace='cv', app_name='cv')),
+    url(r'^dashboard/', include('dashboard.urls', namespace='dashboard', app_name='dashboard')),
 )
 
 # urlpatterns += patterns('',

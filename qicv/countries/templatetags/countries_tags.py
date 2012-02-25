@@ -20,5 +20,4 @@ def iso_flag(iso, flag_path=u''):
 	return iso_flag(iso, flag_path)
 iso_flag = stringfilter(iso_flag)
 
-# Syntax: register.filter(name of filter, callback)
 register.filter('iso_flag', iso_flag)

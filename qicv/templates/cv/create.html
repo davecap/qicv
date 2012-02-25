@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Registration" %}{% endblock %}
+{% block title %}{% trans "Create a CV" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Registration" %}</h1>
+    <h1>{% trans "Create a CV" %}</h1>
 
     <form action="." method="post">
         {% csrf_token %}
@@ -12,7 +12,7 @@
             {{ form.as_p }}
         </fieldset>
         <fieldset class="submit-row">
-            <p><button class="btn btn-primary btn-large" type="submit">{% trans "Create account" %}</button></p>
+            <p><button class="btn btn-primary btn-large" type="submit">{% trans "Create" %}</button></p>
         </fieldset>
     </form>
 {% endblock %}

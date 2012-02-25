@@ -27,6 +27,9 @@ class CV(models.Model):
     created = models.DateTimeField(_("Created On"), auto_now_add=True, blank=True, editable=False)
     updated = models.DateTimeField(_("Updated On"), auto_now=True, blank=True, editable=False)
 
+    def __unicode__(self):
+        return self.full_name()
+
     def initials(self):
         return '%s.%s.' % self.first_name[0], self.last_name[0]
 
@@ -35,22 +38,24 @@ class CV(models.Model):
 
     def has_list_permission(self, user):
         """Check if a user has permission to view this profile"""
+        if self.user == user:
+            return True
         return self.list_privacy != 'hidden'
 
     def get_listable_info(self, user):
         if self.has_list_permission(user):
             if self.has_view_permission(user) or self.list_privacy == 'none':
                 # get all listable info
-                return {'name': self.full_name(), 'country': self.country}
+                return {'can_view': self.has_view_permission(user), 'pk': self.pk, 'name': self.full_name(), 'country': self.country}
             elif self.list_privacy == 'limited':
                 # limited info
-                return {'name': self.initials(), 'country': self.country}
+                return {'can_view': self.has_view_permission(user), 'pk': self.pk, 'name': self.initials(), 'country': self.country}
         else:
             return None
 
     def has_view_permission(self, user):
         """Check if a user can view the profile"""
-        if user.is_staff:
+        if user.is_staff or self.user == user:
             return True
 
         try:

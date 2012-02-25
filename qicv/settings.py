@@ -239,6 +239,10 @@ if DEBUG:
     COMPRESS_ENABLED = False
     COMPRESS_OFFLINE = False
 
+    DEBUG_TOOLBAR_CONFIG = {
+        'INTERCEPT_REDIRECTS': False,
+    }
+
 # user profile model
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 

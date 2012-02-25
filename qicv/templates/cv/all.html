@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load countries_tags %}
+
+{% block title %}{% trans "All CVs" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "All CVs" %}</h1>
+
+    {% if cvs %}
+        {% for c in cvs %}
+            <div class="cv" style="margin:20px;">
+                <span class="name">{{ c.name }}</span> <br />
+                <span class="country"><img src="{{ c.country.iso|iso_flag }}"/></span>
+                {% if c.can_view %}
+                <a href="{% url cv:cv c.pk %}">View this CV</a>
+                {% else %}
+                <a href="{% url cv:request c.pk %}" class="btn btn-info">Request access</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <h2>There are no visible CVs.</h2>
+    {% endif %}
+
+    <div class="cv-create-box" style="margin-top:25px;">
+        <a href="{% url cv:create %}" class="btn btn-large btn-primary">Create a CV</a>
+    </div>
+
+{% endblock %}

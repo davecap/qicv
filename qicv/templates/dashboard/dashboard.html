@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Dashboard" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Dashboard" %}</h1>
+
+    Not done yet!!
+
+    <div class="cv-create-box" style="margin-top:25px;">
+        <a href="{% url cv:create %}" class="btn btn-large btn-primary">Create a CV</a>
+    </div>
+
+{% endblock %}

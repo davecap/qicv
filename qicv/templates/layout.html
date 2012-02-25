@@ -15,9 +15,9 @@
           <div class="nav-collapse">
             <ul class="nav">
               {% if request.user.is_authenticated %}
-              <li class="active"><a href="/">Dashboard</a></li>
-              <li><a href="/cvs/">My CVs</a></li>
-              <li><a href="/cvs/all">All CVs</a></li>
+              <li><a href="/dashboard/">Dashboard</a></li>
+              <li><a href="{% url cv:my %}">My CVs</a></li>
+              <li><a href="{% url cv:all %}">All CVs</a></li>
               {% else %}
               <li class="active"><a href="/">Home</a></li>
               {% endif %}
@@ -47,6 +47,19 @@
 
   <div class="main {% block main_class %}{% endblock %}">
     <div class="container">
+
+      {% if messages %}
+        {% for message in messages %}
+        <div class="messages">
+          {% for category,message in messages %}
+          <div class="alert alert-{{ category }}">
+            {{ message|safe }}
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      {% endif %}
+
     {% block content %}
     {% endblock %}
     </div>
